@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="HelpTextTooltip.widget.HelpTextTooltip" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ widget.xsd">
+    <name>HelpTextTooltip</name>
+    <description>Add an info-icon and configure the tooltip.</description>
+    <icon></icon>
+    <properties>
+
+        <property key="contexAttribute" type="attribute" isPath="optional" pathType="reference" required="true"> 
+            <caption>Context attribute</caption>
+            <category>Basic</category>
+            <description>The attribute to provide text for.</description>
+            <attributeTypes>
+                <attributeType name="AutoNumber"/>
+                <attributeType name="Binary"/>
+                <attributeType name="Boolean"/>
+                <attributeType name="DateTime"/>
+                <attributeType name="Decimal"/>
+                <attributeType name="Enum"/>
+                <attributeType name="HashString"/>
+                <attributeType name="Integer"/>
+                <attributeType name="Long"/>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>       
+
+        <property key="helpEntity" type="entity">
+            <caption>Help entity</caption>
+            <category>Basic</category>
+            <description>The entity that contains the helptext.</description>
+        </property>
+
+        <property key="keyAttribute" type="attribute" entityProperty="helpEntity">
+            <caption>Key attribute</caption>
+            <category>Basic</category>
+            <description>The help entity is selected by HelpEntity.KeyAttribute = "[ContextEntity].[ContextAttribute]"</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>
+
+        <property key="helpAttribute" type="attribute" entityProperty="helpEntity">
+            <caption>Help attribute</caption>
+            <category>Basic</category>
+            <description>Contains the text to be displayed</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>        
+
+        <property key="noHelpFound" type="string" defaultValue="No help text found." required="false">
+            <caption>Default message</caption>
+            <category>Basic</category>
+            <description>String that is displayed when no helptext is found.</description>
+        </property>
+
+        <property key="displayIcon" type="boolean" defaultValue="true">
+            <caption>Show icon</caption>
+            <category>Basic</category>
+            <description>Show a 'help' icon.</description>
+        </property>
+
+    </properties>
+</widget>
