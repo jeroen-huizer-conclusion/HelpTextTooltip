@@ -25,4 +25,4 @@ Add a runtime configurable, lazily loaded title-text (i.e. a mouseover text) to 
 3. Configure the widget.
 
 ## Attribution
-* 
+* Icon by [GlyphLab](https://www.iconfinder.com/glyphlab), free for commercial use.
