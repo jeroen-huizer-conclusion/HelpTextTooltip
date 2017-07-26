@@ -26,7 +26,7 @@ define([
 
         postCreate: function () {
             domquery("label" , this.domNode.previousSibling).forEach(function attachMouseOver(node){
-                var supNode = domConstruct.create("sup",{style:"padding-left:1px;"}, node);
+                var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, node);
                 if(this.displayIcon){
                     domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
                 }
@@ -42,16 +42,7 @@ define([
         },
 
         _getHelpText: function(node){
-
-            if(this._contextObj && !this._helpText.length){
-                var xpath = "//"+this.helpEntity+"["+this.keyAttribute+" = '"+this._contextObj.getEntity()+"."+this.contexAttribute+"']";
-                var filter = {attributes: [this.helpAttribute], amount: 1};
-                mx.data.get({xpath: xpath, callback: lang.hitch(this, this._setHelpText, node), filter: filter});
-            }
-            else{
-                this._setHelpText(node);
-            }
-
+            this._setHelpText(node);
         },
 
         _setHelpText: function(node, objs){
