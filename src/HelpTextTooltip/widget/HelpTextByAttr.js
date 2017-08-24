@@ -12,7 +12,6 @@ define([
         helpEntity: null,
         keyAttribute: null,
         helpAttribute: null,
-        noHelpFound: 'No help text found.',
         displayIcon: true,
 
         // Local

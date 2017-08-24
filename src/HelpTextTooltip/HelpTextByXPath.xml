@@ -26,12 +26,6 @@
             </attributeTypes>
         </property>        
 
-        <property key="noHelpFound" type="string" defaultValue="No help text found." required="false">
-            <caption>Default message</caption>
-            <category>Basic</category>
-            <description>String that is displayed when no helptext is found.</description>
-        </property>
-
         <property key="displayIcon" type="boolean" defaultValue="true">
             <caption>Show icon</caption>
             <category>Basic</category>

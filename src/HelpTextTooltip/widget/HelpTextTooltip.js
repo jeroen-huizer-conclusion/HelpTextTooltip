@@ -17,7 +17,6 @@ define([
         helpEntity: null,
         keyAttribute: null,
         helpAttribute: null,
-        noHelpFound: 'No help text found.',
         displayIcon: true,
 
         // Local
@@ -25,18 +24,18 @@ define([
         _helpText : '',
 
         postCreate: function () {
-            domquery("label" , this.domNode.previousSibling).forEach(function attachMouseOver(node){
-                var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, node);
-                if(this.displayIcon){
-                    domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
-                }
-                on(node, "mouseover", lang.hitch(this, this._getHelpText, node));
-            }, this);
         },
 
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
+
+                // There might be a better way to 'act rendered', but I don't know it
+                var that = this; 
+                domquery("label" , this.domNode.previousSibling).forEach(function(node){
+                    setTimeout(function(){
+                        that._getHelpText(node);})
+                }, 1); 
             }
             callback && callback();
         },
@@ -48,10 +47,15 @@ define([
         _setHelpText: function(node, objs){
             if(objs && objs.length){
                 this._helpText = objs[0].get(this.helpAttribute);
-            } else if (!this._helpText.length){
-                this._helpText = this.noHelpFound;
+                if(!this._helpText || !this._helpText.length)
+                    return;
+                                    
+                node.setAttribute("title", this._helpText);
+                if(this.displayIcon){
+                    var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, node);
+                    domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
+                }
             } 
-            node.setAttribute("title", this._helpText);
         }
     });
 });
