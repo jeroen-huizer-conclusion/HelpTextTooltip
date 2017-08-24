@@ -1,9 +1,11 @@
+/* global define, require, mx*/ 
+"use strict";
+
 define([
     "dojo/_base/declare",
     "HelpTextTooltip/widget/HelpTextTooltip",
     "dojo/_base/lang"], 
     function (declare, _tooltip, lang) {
-    "use strict";
 
     return declare("HelpTextTooltip.widget.HelpTextByAttr", [_tooltip], {
 

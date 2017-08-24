@@ -1,3 +1,6 @@
+/* global define, require*/ 
+"use strict";
+
 define([
     "dojo/_base/declare",
     "mxui/widget/_WidgetBase",
@@ -8,7 +11,6 @@ define([
     "dojo/query"
     ], 
     function (declare, _WidgetBase, lang, domConstruct, on, domquery) {
-    "use strict";
 
     return declare("HelpTextTooltip.widget.HelpTextTooltip", [_WidgetBase], {
 
@@ -34,7 +36,7 @@ define([
                 var that = this; 
                 domquery("label" , this.domNode.previousSibling).forEach(function(node){
                     setTimeout(function(){
-                        that._getHelpText(node);})
+                        that._getHelpText(node);});
                 }, 1); 
             }
             callback && callback();
