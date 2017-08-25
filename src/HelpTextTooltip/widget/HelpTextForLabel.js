@@ -24,7 +24,8 @@ define([
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
-                domquery("label" , this.domNode.previousSibling).forEach(this._getHelpTextInBackground, this); 
+                if(this.domNode.previousSibling)
+                    domquery("label" , this.domNode.previousSibling).forEach(this._getHelpTextInBackground, this); 
             }
             callback && callback();
         },
