@@ -9,7 +9,7 @@ define([
     ], 
     function (declare, _ToolTip, lang) {
 
-    return declare("HelpTextTooltip.widget.HelpTextByXPath", [_ToolTip], {
+    return declare("HelpTextTooltip.widget.HelpTextForLabel", [_ToolTip], {
 
         // Widget
         helpEntity: null,
@@ -35,4 +35,4 @@ define([
     });
 });
 
-require(["HelpTextTooltip/widget/HelpTextByXPath"]);
+require(["HelpTextTooltip/widget/HelpTextForLabel"]);
