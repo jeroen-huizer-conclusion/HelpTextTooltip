@@ -7,12 +7,17 @@ Add a runtime configurable, lazily loaded title-text (i.e. a mouseover text) to 
 ## Features
 * Runtime configurable help texts, stored in an entity of your choosing
 * Optional 'help' icon
-* Fallback text when no help-text is found
-* Help-texts are lazy-loaded
+* Icon is not rendered if no help-text is found.
+* Help-texts are loaded in background (i.e. page does not wait for all results)
+* Three flavours:
+* * Standalone helptext: define your own label
+* * Helptext for Label: attach a helptext to a (default) mendix label.
+* * Helptext for Tabs: attach a helptext to a tabheader a given index.
 
 ## Limitations
 * does not support HTML (I think)
-* Requires a 'label' to attach itself to
+* Helptext for label:  Widget must be included right after the field.
+* Helptext for Tabs: Widget must be in the same container as the tab-container.
 
 ## Dependencies
 
@@ -21,7 +26,7 @@ Add a runtime configurable, lazily loaded title-text (i.e. a mouseover text) to 
 ## Configuration
 
 1. Add the .mpk in dist to your project.
-2. Add the widget right after a native-input widget.
+2. Add the widget at the appropriate place.
 3. Configure the widget.
 
 ## Attribution
