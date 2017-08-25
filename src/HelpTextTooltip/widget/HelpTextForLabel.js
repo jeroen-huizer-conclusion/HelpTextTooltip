@@ -5,7 +5,8 @@ define([
     "dojo/_base/declare",
     "HelpTextTooltip/widget/HelpTextTooltip",
 
-    "dojo/query"
+    "dojo/query",
+    "dojo/NodeList-traverse"
     ], 
     function (declare, _ToolTip, domquery) {
 
@@ -25,7 +26,7 @@ define([
             if(obj){
                 this._contextObj = obj;
                 if(this.domNode.previousSibling)
-                    domquery("label" , this.domNode.previousSibling).forEach(this._getHelpTextInBackground, this); 
+                    domquery("label:first-child" , this.domNode.previousSibling).first().forEach(this._getHelpTextInBackground, this); 
             }
             callback && callback();
         },
