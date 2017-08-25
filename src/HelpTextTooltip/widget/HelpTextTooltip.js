@@ -25,21 +25,18 @@ define([
         _contextObj: {},
         _helpText : '',
 
-        postCreate: function () {
-        },
-
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
-
-                // There might be a better way to 'act rendered', but I don't know it
-                var that = this; 
-                domquery("label" , this.domNode.previousSibling).forEach(function(node){
-                    setTimeout(function(){
-                        that._getHelpText(node);});
-                }, 1); 
+                domquery("label" , this.domNode.previousSibling).forEach(this._getHelpTextInBackground, this); 
             }
             callback && callback();
+        },
+
+        _getHelpTextInBackground: function(node){
+            // There might be a better way to 'act rendered', but I don't know it
+            var that = this; 
+            setTimeout(function(){that._getHelpText(node);}, 1);
         },
 
         _getHelpText: function(node){
@@ -49,16 +46,25 @@ define([
         _setHelpText: function(node, objs){
             if(objs && objs.length){
                 this._helpText = objs[0].get(this.helpAttribute);
-                if(!this._helpText || !this._helpText.length)
+            } 
+
+            this._updateRendering(node);
+        },
+
+        _updateRendering: function(node){
+            if(!this._helpText || !this._helpText.length)
                     return;
                                     
-                node.setAttribute("title", this._helpText);
-                if(this.displayIcon){
-                    var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, node);
-                    domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
-                }
-            } 
+            node.setAttribute("title", this._helpText);
+            if(this.displayIcon){
+                var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, node);
+                domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
+            }
+
+
         }
+
+
     });
 });
 
