@@ -1,21 +1,23 @@
-/* global define, require, mx*/ 
+/* global define, require*/ 
 "use strict";
 
 define([
     "dojo/_base/declare",
     "HelpTextTooltip/widget/HelpTextTooltip",
 
-    "dojo/query"
+    "dojo/_base/lang",
+    "dojo/query!css3"
     ], 
-    function (declare, _ToolTip, domquery) {
+    function (declare, _ToolTip, lang, domquery) {
 
-    return declare("HelpTextTooltip.widget.HelpTextForLabel", [_ToolTip], {
+    return declare("HelpTextTooltip.widget.HelpTextForTab", [_ToolTip], {
 
         // Widget
         helpEntity: null,
         keyConstraint: '',
         helpAttribute: null,
         displayIcon: true,
+        tabIndex: 1,
 
         // Local
         _contextObj: {},
@@ -24,7 +26,9 @@ define([
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
-                domquery("label" , this.domNode.previousSibling).forEach(this._getHelpTextInBackground, this); 
+                var selector = lang.replace("ul>li:nth-child({tabIndex})>a", this);
+
+                domquery(selector , this.domNode.parentNode).forEach(this._getHelpTextInBackground, this); 
             }
             callback && callback();
         },
@@ -32,4 +36,4 @@ define([
     });
 });
 
-require(["HelpTextTooltip/widget/HelpTextForLabel"]);
+require(["HelpTextTooltip/widget/HelpTextForTab"]);

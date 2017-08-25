@@ -1,4 +1,4 @@
-/* global define, require*/ 
+/* global define, require, mx*/ 
 "use strict";
 
 define([
@@ -6,11 +6,9 @@ define([
     "mxui/widget/_WidgetBase",
 
     "dojo/_base/lang",
-    "dojo/dom-construct",
-    "dojo/on",
-    "dojo/query"
+    "dojo/dom-construct"
     ], 
-    function (declare, _WidgetBase, lang, domConstruct, on, domquery) {
+    function (declare, _WidgetBase, lang, domConstruct) {
 
     return declare("HelpTextTooltip.widget.HelpTextTooltip", [_WidgetBase], {
 
@@ -28,7 +26,6 @@ define([
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
-                domquery("label" , this.domNode.previousSibling).forEach(this._getHelpTextInBackground, this); 
             }
             callback && callback();
         },
@@ -40,7 +37,18 @@ define([
         },
 
         _getHelpText: function(node){
-            this._setHelpText(node);
+
+            if(this._contextObj && !this._helpText.length){
+                var xpath = "//"+this.helpEntity+this.keyConstraint;
+                if(this.keyConstraint.indexOf('CurrentObject') > 0 && this._contextObj){
+                    xpath.replace(/\[\%CurrentObject\%\]/gi, this._contextObj.getGuid());
+                }
+                var filter = {attributes: [this.helpAttribute], amount: 1};
+                mx.data.get({xpath: xpath, callback: lang.hitch(this, this._setHelpText, node), filter: filter});
+            }
+            else{
+                this._setHelpText(node);
+            }
         },
 
         _setHelpText: function(node, objs){
@@ -60,11 +68,7 @@ define([
                 var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, node);
                 domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
             }
-
-
         }
-
-
     });
 });
 
