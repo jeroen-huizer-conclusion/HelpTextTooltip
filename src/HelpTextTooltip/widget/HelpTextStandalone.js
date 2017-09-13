@@ -23,6 +23,11 @@ define([
         _contextObj: {},
         _helpText : '',
 
+        postCreate: function(){
+            // Prevent parent.
+        },
+
+
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;

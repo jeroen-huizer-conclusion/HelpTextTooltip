@@ -25,6 +25,11 @@ define([
         _contextObj: {},
         _helpText : '',
 
+        postCreate: function(){
+            if(this.domNode)
+                this.domNode.style.display = "none"; // Don't want to use space
+        },
+
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
