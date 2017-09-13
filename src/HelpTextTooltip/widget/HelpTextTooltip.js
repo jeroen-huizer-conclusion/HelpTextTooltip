@@ -40,7 +40,7 @@ define([
 
         _getHelpText: function(node){
 
-            if(this._contextObj && !this._helpText.length){
+            if(!this._helpText.length){
                 var xpath = "//"+this.helpEntity+this.keyConstraint;
                 if(this.keyConstraint.indexOf('CurrentObject') > 0 && this._contextObj){
                     xpath.replace(/\[\%CurrentObject\%\]/gi, this._contextObj.getGuid());

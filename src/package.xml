@@ -3,6 +3,7 @@
     <clientModule name="HelpTextTooltip" version="1.0.0" xmlns="http://www.mendix.com/clientModule/1.0/">
         <widgetFiles>
             <widgetFile path="HelpTextTooltip/HelpTextForLabel.xml"/>
+            <widgetFile path="HelpTextTooltip/HelpTextForButton.xml"/>
             <widgetFile path="HelpTextTooltip/HelpTextForTab.xml"/>
             <widgetFile path="HelpTextTooltip/HelpTextStandalone.xml"/>
         </widgetFiles>
