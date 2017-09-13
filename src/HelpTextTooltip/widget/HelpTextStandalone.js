@@ -36,7 +36,9 @@ define([
                     return;
 
             if(this.displayText && this.displayText.length){
-                var textNode = domConstruct.create("label",{title: this._helpText, innerHTML: this.displayText}, node);
+                var textNode = domConstruct.create("label",{innerHTML: this.displayText}, node);
+
+                this._addTooltipToNode(this._helpText, textNode);
 
                 if(this.displayIcon){
                     var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, textNode);

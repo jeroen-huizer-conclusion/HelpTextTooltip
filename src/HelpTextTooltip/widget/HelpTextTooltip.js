@@ -6,9 +6,11 @@ define([
     "mxui/widget/_WidgetBase",
 
     "dojo/_base/lang",
-    "dojo/dom-construct"
+    "dojo/dom-construct",
+
+    "dijit/Tooltip"
     ], 
-    function (declare, _WidgetBase, lang, domConstruct) {
+    function (declare, _WidgetBase, lang, domConstruct, Tooltip) {
 
     return declare("HelpTextTooltip.widget.HelpTextTooltip", [_WidgetBase], {
 
@@ -27,7 +29,7 @@ define([
             if(obj){
                 this._contextObj = obj;
             }
-            callback && callback();
+            if(callback){ callback(); }
         },
 
         _getHelpTextInBackground: function(node){
@@ -62,12 +64,26 @@ define([
         _updateRendering: function(node){
             if(!this._helpText || !this._helpText.length)
                     return;
-                                    
-            node.setAttribute("title", this._helpText);
+
+            this._addTooltipToNode(this._helpText, node);
+
+            // node.setAttribute("title", this._helpText);
             if(this.displayIcon){
                 var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, node);
                 domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
             }
+        },
+
+        _addTooltipToNode: function(tooltipText, node){
+            // Overwrites all tooltips..
+            Tooltip.defaultPosition = ['below-alt','below', 'after', 'before', 'above-alt', 'above'];
+
+            new Tooltip({
+                label: this._helpText,
+                showDelay: 250,
+                connectId: [node]
+            });
+
         }
     });
 });
