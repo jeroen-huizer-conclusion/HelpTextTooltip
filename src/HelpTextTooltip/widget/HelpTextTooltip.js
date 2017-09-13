@@ -60,7 +60,8 @@ define([
 
         _setHelpText: function(node, objs){
             if(objs && objs.length){
-                this._helpText = objs[0].get(this.helpAttribute);
+                var text = objs[0].get(this.helpAttribute);
+                this._helpText = text.replace(/(?:\r\n|\r|\n)/g, '<br/>');
             } 
 
             this._updateRendering(node);
