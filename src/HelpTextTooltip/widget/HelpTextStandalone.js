@@ -31,8 +31,8 @@ define([
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
-                this._getHelpTextInBackground(this.domNode);
             }
+            this._getHelpTextInBackground(this.domNode);
             callback && callback();
         },
 

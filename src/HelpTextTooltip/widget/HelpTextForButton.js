@@ -25,10 +25,9 @@ define([
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
-                if(this.domNode.previousSibling)
-                    this._getHelpTextInBackground(this.domNode.previousSibling)
-                    // domquery("label:first-child" , this.domNode.previousSibling).first().forEach(this._getHelpTextInBackground, this); 
             }
+            if(this.domNode.previousSibling)
+                this._getHelpTextInBackground(this.domNode.previousSibling)
             callback && callback();
         },
 

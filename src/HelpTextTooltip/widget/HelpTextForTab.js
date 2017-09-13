@@ -26,10 +26,10 @@ define([
         update: function (obj, callback) {
             if(obj){
                 this._contextObj = obj;
-                var selector = lang.replace("ul>li:nth-child({tabIndex})>a", this);
-
-                domquery(selector , this.domNode.parentNode).forEach(this._getHelpTextInBackground, this); 
             }
+            var selector = lang.replace("ul>li:nth-child({tabIndex})>a", this);
+            domquery(selector , this.domNode.parentNode).forEach(this._getHelpTextInBackground, this); 
+
             callback && callback();
         },
 
