@@ -2,7 +2,7 @@ HelpTextTooltip
 =============
 
 ## Description
-Add a runtime configurable, lazily loaded title-text (i.e. a mouseover text) to form labels.
+Add a runtime configurable, lazily loaded title-text (i.e. a mouseover text) to various page elements.
 
 ## Features
 * Runtime configurable help texts, stored in an entity of your choosing
@@ -10,9 +10,10 @@ Add a runtime configurable, lazily loaded title-text (i.e. a mouseover text) to 
 * Icon is not rendered if no help-text is found.
 * Help-texts are loaded in background (i.e. page does not wait for all results)
 * Three flavours:
-* * Standalone helptext: define your own label
-* * Helptext for Label: attach a helptext to a (default) mendix label.
-* * Helptext for Tabs: attach a helptext to a tabheader a given index.
+  * Standalone helptext: define your own label
+  * Helptext for Label: attach a helptext to a (default) mendix label.
+  * Helptext for Tabs: attach a helptext to a tabheader a given index.
+  * Helptext for Buttons: attach a helptext to a button element.
 
 ## Limitations
 * does not support HTML (I think)
