@@ -43,8 +43,13 @@ define([
             },
 
             uninitialize: function() {
-                this._tooltip.close(); // In IE: Tooltip does *not always* close when connected node is destroyed.
-                this._tooltip.destroy();
+                // In IE: Tooltip does *not always* close when connected node is destroyed.
+                if(this._tooltip.close && typeof this.tooltip.close  == "function")
+                    this._tooltip.close(); 
+                    
+                if(this._tooltip.destroy && typeof this.tooltip.destroy  == "function")
+                    this._tooltip.destroy();
+                
             },
 
             _getHelpTextInBackground: function(node) {
