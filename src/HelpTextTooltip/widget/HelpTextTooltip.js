@@ -27,6 +27,7 @@ define([
             _contextObj: {},
             _helpText: '',
             _tooltip: {},
+            _supNode: {},
 
             postCreate: function() {
                 if (this.domNode)
@@ -49,7 +50,6 @@ define([
 
                 if(this._tooltip.destroy && typeof this._tooltip.destroy  == "function")
                     this._tooltip.destroy();
-
             },
 
             _getHelpTextInBackground: function(node) {
@@ -95,19 +95,24 @@ define([
             },
 
             _updateRendering: function(node) {
+
+                // Cleanup existing nodes
+                if(this._supNode)
+                    domConstruct.destroy(this._supNode);
+
                 if (!this._helpText || !this._helpText.length)
                     return;
 
-                this._addTooltipToNode(this._helpText, node);
+                this._addTooltipToNode(this._helpText, node);   //Note: tooltip is not cleaned up..
 
                 // node.setAttribute("title", this._helpText);
                 if (this.displayIcon) {
-                    var supNode = domConstruct.create("sup", {
+                    this._supNode = domConstruct.create("sup", {
                         style: "padding-left:3px;"
                     }, node);
                     domConstruct.create("div", {
                         class: "glyphicon glyphicon-question-sign"
-                    }, supNode);
+                    }, this._supNode);
                 }
             },
 

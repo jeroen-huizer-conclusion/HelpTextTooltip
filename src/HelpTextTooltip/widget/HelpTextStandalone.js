@@ -22,6 +22,7 @@ define([
         // Local
         _contextObj: {},
         _helpText : '',
+        _textnode: {},
 
         postCreate: function(){
             // Prevent parent.
@@ -37,20 +38,24 @@ define([
         },
 
         _updateRendering: function(node){
+            // Cleanup existing nodes
+            if(this._textNode)
+                domConstruct.destroy(this._textNode);
+
             if(!this._helpText || !this._helpText.length)
-                    return;
+                return;
 
             if(this.displayText && this.displayText.length){
-                var textNode = domConstruct.create("label",{innerHTML: this.displayText}, node);
+                this._textNode = domConstruct.create("label",{innerHTML: this.displayText}, node);
 
-                this._addTooltipToNode(this._helpText, textNode);
+                this._addTooltipToNode(this._helpText, this._textNode);
 
                 if(this.displayIcon){
-                    var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, textNode);
-                    domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
+                    var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, this._textNode);
+                    domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, this._textNode);
                 }
             } else if(this.displayAsLabel){
-                var textNode = domConstruct.create("label",{innerHTML: this._helpText}, node);
+                this._textNode = domConstruct.create("label",{innerHTML: this._helpText}, node);
             }
         }
 
