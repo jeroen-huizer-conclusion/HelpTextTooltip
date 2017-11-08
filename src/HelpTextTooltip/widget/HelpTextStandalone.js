@@ -1,4 +1,4 @@
-/* global define, require*/ 
+/* global define, require*/
 "use strict";
 
 define([
@@ -7,7 +7,7 @@ define([
 
     "dojo/_base/lang",
     "dojo/dom-construct"
-    ], 
+    ],
     function (declare, _ToolTip, lang, domConstruct) {
 
     return declare("HelpTextTooltip.widget.HelpTextStandalone", [_ToolTip], {
@@ -49,9 +49,11 @@ define([
                     var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, textNode);
                     domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, supNode);
                 }
-            }                                    
+            } else if(this.displayAsLabel){
+                var textNode = domConstruct.create("label",{innerHTML: this._helpText}, node);
+            }
         }
-        
+
     });
 });
 

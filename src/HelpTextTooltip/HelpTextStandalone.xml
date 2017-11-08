@@ -24,18 +24,24 @@
             <attributeTypes>
                 <attributeType name="String"/>
             </attributeTypes>
-        </property>        
+        </property>
 
-        <property key="displayText" type="string" defaultValue="Help">
+        <property key="displayAsLabel" type="boolean" defaultValue="false">
+            <caption>Display as label</caption>
+            <category>Basic</category>
+            <description>If true, the helptext is rendered as a label, instead of a tooltip.</description>
+        </property>
+
+        <property key="displayText" type="string" defaultValue="" required="false">
             <caption>Label text</caption>
             <category>Basic</category>
-            <description>A text to display.</description>
-        </property>        
+            <description>A text to display. Must be set if 'Display as label' is false and empty if it's true.</description>
+        </property>
 
         <property key="displayIcon" type="boolean" defaultValue="true">
             <caption>Show icon</caption>
             <category>Basic</category>
-            <description>Show a 'help' icon.</description>
+            <description>Show a 'help' icon. Used only in combination with a custom 'Label text'.</description>
         </property>
 
     </properties>
