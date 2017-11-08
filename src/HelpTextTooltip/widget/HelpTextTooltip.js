@@ -97,7 +97,7 @@ define([
             _updateRendering: function(node) {
 
                 // Cleanup existing nodes
-                if(this._supNode)
+                if(this._supNode && this._supNode.nodeType)
                     domConstruct.destroy(this._supNode);
 
                 if (!this._helpText || !this._helpText.length)

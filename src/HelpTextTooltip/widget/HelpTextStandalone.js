@@ -39,7 +39,7 @@ define([
 
         _updateRendering: function(node){
             // Cleanup existing nodes
-            if(this._textNode)
+            if(this._textNode && this._textNode.nodeType)
                 domConstruct.destroy(this._textNode);
 
             if(!this._helpText || !this._helpText.length)
