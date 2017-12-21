@@ -24,12 +24,20 @@
             <attributeTypes>
                 <attributeType name="String"/>
             </attributeTypes>
-        </property>        
+        </property>
 
-        <property key="displayIcon" type="boolean" defaultValue="true">
-            <caption>Show icon</caption>
+        <property key="displayIcon" type="enumeration" defaultValue="question_sign">
+            <caption>Icon</caption>
             <category>Basic</category>
-            <description>Show a 'help' icon.</description>
+            <description>Show a help/info glyphicon.</description>
+            <enumerationValues>
+                <enumerationValue key="none">None</enumerationValue>
+                <enumerationValue key="question_sign">Question mark</enumerationValue>
+                <enumerationValue key="info_sign">Info sign</enumerationValue>
+                <enumerationValue key="flag">Flag</enumerationValue>
+                <enumerationValue key="exclamation_sign">Exclamation mark</enumerationValue>
+                <enumerationValue key="alert">Alert</enumerationValue>
+            </enumerationValues>
         </property>
 
     </properties>

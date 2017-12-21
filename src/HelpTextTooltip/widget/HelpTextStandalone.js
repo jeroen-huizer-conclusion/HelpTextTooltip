@@ -50,10 +50,13 @@ define([
 
                 this._addTooltipToNode(this._helpText, this._textNode);
 
-                if(this.displayIcon){
+                if (this.displayIcon.length && this.displayIcon !== "none") {
+                    var glyphClass = 'glyphicon-'+this.displayIcon.replace('_','-');
                     var supNode = domConstruct.create("sup",{style:"padding-left:3px;"}, this._textNode);
-                    domConstruct.create("div", {class: "glyphicon glyphicon-question-sign"}, this._textNode);
+
+                    domConstruct.create("div", {class: "glyphicon "+glyphClass}, this._textNode);
                 }
+                            
             } else if(this.displayAsLabel){
                 this._textNode = domConstruct.create("label",{innerHTML: this._helpText}, node);
             }

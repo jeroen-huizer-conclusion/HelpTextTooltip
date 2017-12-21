@@ -106,12 +106,14 @@ define([
                 this._addTooltipToNode(this._helpText, node);   //Note: tooltip is not cleaned up..
 
                 // node.setAttribute("title", this._helpText);
-                if (this.displayIcon) {
+                if (this.displayIcon.length && this.displayIcon !== "none") {
+                    var glyphClass = 'glyphicon-'+this.displayIcon.replace('_','-');
+
                     this._supNode = domConstruct.create("sup", {
                         style: "padding-left:3px;"
                     }, node);
                     domConstruct.create("div", {
-                        class: "glyphicon glyphicon-question-sign"
+                        class: "glyphicon "+glyphClass
                     }, this._supNode);
                 }
             },
